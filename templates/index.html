@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玄花秘典 | 风水花卉智能推荐</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a12;
+            --bg-card: rgba(20, 20, 35, 0.8);
+            --glow-purple: #9d4edd;
+            --glow-cyan: #00d4ff;
+            --glow-gold: #ffd700;
+            --glow-pink: #ff6b9d;
+            --text-primary: #e8e8ff;
+            --text-secondary: #8888aa;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* 神秘星空背景 */
+        .cosmos-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 157, 0.08) 0%, transparent 60%),
+                var(--bg-dark);
+            z-index: -2;
+        }
+
+        /* 浮动粒子 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(157, 78, 221, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+            box-shadow: 0 0 10px var(--glow-purple);
+        }
+
+        .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: rgba(0, 212, 255, 0.5); box-shadow: 0 0 10px var(--glow-cyan); }
+        .particle:nth-child(3) { left: 40%; animation-delay: -4s; background: rgba(255, 215, 0, 0.5); box-shadow: 0 0 10px var(--glow-gold); }
+        .particle:nth-child(4) { left: 60%; animation-delay: -6s; background: rgba(255, 107, 157, 0.5); box-shadow: 0 0 10px var(--glow-pink); }
+        .particle:nth-child(5) { left: 80%; animation-delay: -8s; }
+        .particle:nth-child(6) { left: 10%; animation-delay: -10s; background: rgba(0, 212, 255, 0.5); }
+        .particle:nth-child(7) { left: 70%; animation-delay: -12s; background: rgba(157, 78, 221, 0.5); }
+        .particle:nth-child(8) { left: 90%; animation-delay: -14s; background: rgba(255, 107, 157, 0.5); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) scale(1); }
+            90% { opacity: 1; transform: translateY(10vh) scale(1); }
+            100% { opacity: 0; transform: translateY(0) scale(0); }
+        }
+
+        /* 花朵装饰 */
+        .flower-decor {
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.03;
+            z-index: -1;
+            animation: sway 8s infinite ease-in-out;
+        }
+
+        .flower-decor:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
+        .flower-decor:nth-child(2) { top: 20%; right: 8%; animation-delay: -2s; font-size: 80px; }
+        .flower-decor:nth-child(3) { bottom: 30%; left: 3%; animation-delay: -4s; font-size: 100px; }
+        .flower-decor:nth-child(4) { bottom: 10%; right: 5%; animation-delay: -6s; font-size: 90px; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg) translateX(0); }
+            50% { transform: rotate(5deg) translateX(10px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 神秘标题 */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .title-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .title-main {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 4em;
+            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan), var(--glow-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 0 30px rgba(157, 78, 221, 0.5));
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.5)); }
+            100% { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.7)); }
+        }
+
+        .title-sub {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            letter-spacing: 8px;
+        }
+
+        .title-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--glow-purple), var(--glow-cyan), transparent);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .title-divider::before {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-dark);
+            padding: 0 15px;
+            color: var(--glow-cyan);
+            font-size: 1.2em;
+        }
+
+        /* 玻璃拟态卡片 */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.5), transparent);
+        }
+
+        .card:hover {
+            border-color: rgba(157, 78, 221, 0.4);
+            box-shadow: 0 0 40px rgba(157, 78, 221, 0.15);
+        }
+
+        /* 霓虹边框效果 */
+        .card-glow {
+            box-shadow: 
+                0 0 20px rgba(157, 78, 221, 0.1),
+                inset 0 0 60px rgba(157, 78, 221, 0.03);
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--glow-purple), var(--glow-cyan));
+            border-radius: 2px;
+        }
+
+        /* 方向选择 - 方位罗盘风格 */
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 12px;
+        }
+
+        .direction-btn {
+            padding: 15px 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .direction-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .direction-btn:hover::before {
+            left: 100%;
+        }
+
+        .direction-btn:hover {
+            border-color: var(--glow-purple);
+            background: rgba(157, 78, 221, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
+        }
+
+        .direction-btn.active {
+            border-color: var(--glow-purple);
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.2));
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+        }
+
+        .direction-btn .dir-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .direction-btn .element {
+            font-size: 0.75em;
+            color: var(--glow-cyan);
+            opacity: 0.8;
+        }
+
+        /* 房间选择 */
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 12px;
+        }
+
+        .room-btn {
+            padding: 15px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .room-btn:hover {
+            border-color: var(--glow-cyan);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+
+        .room-btn.active {
+            border-color: var(--glow-cyan);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 180, 200, 0.15));
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* 生肖选择 - 神秘圆形 */
+        .zodiac-section {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.05), rgba(157, 78, 221, 0.08));
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 107, 157, 0.15);
+        }
+
+        .zodiac-section .hint {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .zodiac-btn {
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .zodiac-btn:hover {
+            border-color: var(--glow-gold);
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .zodiac-btn.active {
+            border-color: var(--glow-gold);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 180, 0, 0.15));
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .zodiac-btn .zodiac-icon {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 4px;
+            filter: grayscale(0.5);
+            transition: filter 0.3s;
+        }
+
+        .zodiac-btn:hover .zodiac-icon,
+        .zodiac-btn.active .zodiac-icon {
+            filter: grayscale(0) drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+        }
+
+        .zodiac-btn .zodiac-name {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .zodiac-btn .zodiac-element {
+            font-size: 0.7em;
+            color: var(--glow-gold);
+            opacity: 0.8;
+        }
+
+        /* 诉求选择 - 水晶球风格 */
+        .wish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .wish-btn {
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .wish-btn:hover::after {
+            opacity: 1;
+        }
+
+        .wish-btn:hover {
+            transform: translateY(-5px);
+            border-color: var(--glow-pink);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.25);
+        }
+
+        .wish-btn.active {
+            border-color: var(--glow-pink);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(200, 100, 150, 0.15));
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .wish-btn .wish-icon {
+            font-size: 2.2em;
+            display: block;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.3));
+        }
+
+        .wish-btn.active .wish-icon {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .wish-btn .wish-name {
+            font-weight: 700;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .wish-btn .wish-desc {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        /* 神秘按钮 */
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.2));
+            border: 2px solid var(--glow-purple);
+            color: white;
+            border-radius: 20px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 4px;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(157, 78, 221, 0.5);
+            border-color: var(--glow-cyan);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn:disabled::before {
+            animation: none;
+        }
+
+        /* 结果区域 */
+        .result-section {
+            display: none;
+        }
+
+        .result-section.show {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 212, 255, 0.15));
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            padding: 30px;
+            border-radius: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .result-header h3 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, var(--glow-gold), var(--glow-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .result-header .tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .result-header .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .result-header .wish-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .result-header .wish-tag {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(200, 100, 150, 0.2));
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 107, 157, 0.4);
+        }
+
+        /* 推荐卡片 - 神秘卷轴 */
+        .recommendation-card {
+            background: linear-gradient(135deg, rgba(20, 20, 35, 0.9), rgba(30, 25, 50, 0.9));
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .recommendation-card:nth-child(1) { animation-delay: 0.1s; }
+        .recommendation-card:nth-child(2) { animation-delay: 0.2s; }
+        .recommendation-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .recommendation-card::before {
+            content: '🌸';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2em;
+            opacity: 0.1;
+        }
+
+        .recommendation-card .flower-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .recommendation-card .flower-name {
+            font-size: 1.6em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--glow-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .recommendation-card .matched-wish {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.4), rgba(200, 100, 150, 0.3));
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid rgba(255, 107, 157, 0.5);
+        }
+
+        .recommendation-card .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-card .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .recommendation-card .info-item span {
+            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .recommendation-card .reason {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(157, 78, 221, 0.05);
+            border-radius: 12px;
+            border-left: 3px solid var(--glow-purple);
+            font-size: 0.95em;
+        }
+
+        .recommendation-card .warnings {
+            color: #ff6b6b;
+            font-size: 0.9em;
+            margin-top: 12px;
+            padding: 10px 15px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        /* 总结区域 */
+        .summary {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 180, 0, 0.05));
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 25px;
+            text-align: center;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            border: 1px dashed rgba(255, 215, 0, 0.3);
+            font-size: 0.95em;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .loading-orb {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
+            animation: orbPulse 2s infinite ease-in-out;
+            box-shadow: 0 0 60px rgba(157, 78, 221, 0.5);
+            position: relative;
+        }
+
+        .loading-orb::before {
+            content: '🌸';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .loading p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        /* 错误提示 */
+        .error-msg {
+            background: rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .error-msg.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .title-main {
+                font-size: 2.8em;
+            }
+
+            .title-sub {
+                font-size: 1em;
+                letter-spacing: 4px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+
+            .direction-grid, .room-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .zodiac-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .wish-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .result-header h3 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .title-main {
+                font-size: 2.2em;
+            }
+
+            .direction-grid, .room-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .direction-btn {
+                padding: 12px 8px;
+            }
+
+            .zodiac-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .wish-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .wish-btn {
+                padding: 15px 12px;
+            }
+
+            .wish-btn .wish-icon {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="cosmos-bg"></div>
+    <div class="particles">
+        <div class="particle" style="left: 5%;"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="flower-decor">🌸</div>
+    <div class="flower-decor">🌺</div>
+    <div class="flower-decor">🌷</div>
+    <div class="flower-decor">🌹</div>
+
+    <div class="container">
+        <!-- 标题 -->
+        <div class="header">
+            <div class="title-wrap">
+                <h1 class="title-main">玄花秘典</h1>
+            </div>
+            <p class="title-sub">风水花卉智能推荐系统</p>
+            <div class="title-divider"></div>
+        </div>
+
+        <!-- 选择卡片 -->
+        <div class="card card-glow">
+            <!-- 房屋朝向 -->
+            <div class="form-group">
+                <div class="section-title">🏠 选择房屋朝向</div>
+                <div class="direction-grid" id="directionGrid"></div>
+            </div>
+
+            <!-- 房间类型 -->
+            <div class="form-group" style="margin-top: 25px;">
+                <div class="section-title">🛋️ 选择房间类型</div>
+                <div class="room-grid" id="roomGrid"></div>
+            </div>
+        </div>
+
+        <!-- 生肖与诉求卡片 -->
+        <div class="card card-glow">
+            <!-- 生肖选择 -->
+            <div class="zodiac-section">
+                <div class="section-title">🐾 您的生肖</div>
+                <p class="hint">选择您的生肖，系统将根据五行相生为您推荐</p>
+                <div class="zodiac-grid" id="zodiacGrid">
+                    <div class="zodiac-btn" data-value="鼠" onclick="selectZodiac('鼠')">
+                        <span class="zodiac-icon">🐭</span>
+                        <span class="zodiac-name">鼠</span>
+                        <span class="zodiac-element">水</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="牛" onclick="selectZodiac('牛')">
+                        <span class="zodiac-icon">🐮</span>
+                        <span class="zodiac-name">牛</span>
+                        <span class="zodiac-element">土</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="虎" onclick="selectZodiac('虎')">
+                        <span class="zodiac-icon">🐯</span>
+                        <span class="zodiac-name">虎</span>
+                        <span class="zodiac-element">木</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="兔" onclick="selectZodiac('兔')">
+                        <span class="zodiac-icon">🐰</span>
+                        <span class="zodiac-name">兔</span>
+                        <span class="zodiac-element">木</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="龙" onclick="selectZodiac('龙')">
+                        <span class="zodiac-icon">🐉</span>
+                        <span class="zodiac-name">龙</span>
+                        <span class="zodiac-element">土</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="蛇" onclick="selectZodiac('蛇')">
+                        <span class="zodiac-icon">🐍</span>
+                        <span class="zodiac-name">蛇</span>
+                        <span class="zodiac-element">火</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="马" onclick="selectZodiac('马')">
+                        <span class="zodiac-icon">🐴</span>
+                        <span class="zodiac-name">马</span>
+                        <span class="zodiac-element">火</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="羊" onclick="selectZodiac('羊')">
+                        <span class="zodiac-icon">🐑</span>
+                        <span class="zodiac-name">羊</span>
+                        <span class="zodiac-element">土</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="猴" onclick="selectZodiac('猴')">
+                        <span class="zodiac-icon">🐵</span>
+                        <span class="zodiac-name">猴</span>
+                        <span class="zodiac-element">金</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="鸡" onclick="selectZodiac('鸡')">
+                        <span class="zodiac-icon">🐔</span>
+                        <span class="zodiac-name">鸡</span>
+                        <span class="zodiac-element">金</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="狗" onclick="selectZodiac('狗')">
+                        <span class="zodiac-icon">🐶</span>
+                        <span class="zodiac-name">狗</span>
+                        <span class="zodiac-element">土</span>
+                    </div>
+                    <div class="zodiac-btn" data-value="猪" onclick="selectZodiac('猪')">
+                        <span class="zodiac-icon">🐷</span>
+                        <span class="zodiac-name">猪</span>
+                        <span class="zodiac-element">水</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 诉求选择 -->
+            <div class="form-group">
+                <div class="section-title">✨ 您的诉求（可选，最多2项）</div>
+                <div class="wish-grid" id="wishGrid">
+                    <div class="wish-btn" data-value="招财" onclick="selectWish('招财')">
+                        <span class="wish-icon">💰</span>
+                        <span class="wish-name">招财</span>
+                        <span class="wish-desc">财运亨通</span>
+                    </div>
+                    <div class="wish-btn" data-value="桃花" onclick="selectWish('桃花')">
+                        <span class="wish-icon">🌸</span>
+                        <span class="wish-name">桃花</span>
+                        <span class="wish-desc">姻缘感情</span>
+                    </div>
+                    <div class="wish-btn" data-value="事业" onclick="selectWish('事业')">
+                        <span class="wish-icon">📈</span>
+                        <span class="wish-name">事业</span>
+                        <span class="wish-desc">学业事业</span>
+                    </div>
+                    <div class="wish-btn" data-value="健康" onclick="selectWish('健康')">
+                        <span class="wish-icon">🏥</span>
+                        <span class="wish-name">健康</span>
+                        <span class="wish-desc">身心康健</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-msg" id="errorMsg"></div>
+
+            <button class="submit-btn" id="submitBtn" onclick="getRecommendation()">
+                🔮 开始智能推荐
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div class="card loading" id="loading">
+            <div class="loading-orb"></div>
+            <p>正在为您开启风水秘典...</p>
+        </div>
+
+        <!-- 结果 -->
+        <div class="card result-section" id="resultSection">
+            <div class="result-header" id="resultHeader">
+                <h3>🌸 秘典指引</h3>
+                <div class="tags">
+                    <span class="tag" id="resultZodiac"></span>
+                    <span class="tag" id="resultDirection"></span>
+                    <span class="tag" id="resultRoom"></span>
+                    <span class="tag" id="resultElement"></span>
+                </div>
+                <div class="wish-tags" id="resultWishes"></div>
+            </div>
+
+            <div id="recommendations"></div>
+
+            <div class="summary" id="summary"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedDirection = '';
+        let selectedRoom = '';
+        let selectedZodiac = '';
+        let selectedWishes = [];
+
+        async function init() {
+            try {
+                const [dirRes, roomRes] = await Promise.all([
+                    fetch('/api/directions'),
+                    fetch('/api/rooms')
+                ]);
+
+                const dirData = await dirRes.json();
+                const roomData = await roomRes.json();
+
+                renderDirections(dirData.data);
+                renderRooms(roomData.data);
+            } catch (err) {
+                showError('加载选项失败，请刷新重试');
+            }
+        }
+
+        function renderDirections(directions) {
+            const grid = document.getElementById('directionGrid');
+            grid.innerHTML = directions.map(d => `
+                <div class="direction-btn" data-value="${d.value}" onclick="selectDirection('${d.value}')">
+                    <span class="dir-name">${d.value}</span>
+                    <span class="element">${d.element} · ${d.colors}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderRooms(rooms) {
+            const grid = document.getElementById('roomGrid');
+            grid.innerHTML = rooms.map(r => `
+                <div class="room-btn" data-value="${r.value}" onclick="selectRoom('${r.value}')">
+                    ${r.label}
+                </div>
+            `).join('');
+        }
+
+        function selectDirection(value) {
+            selectedDirection = value;
+            document.querySelectorAll('.direction-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === value);
+            });
+            checkCanSubmit();
+        }
+
+        function selectRoom(value) {
+            selectedRoom = value;
+            document.querySelectorAll('.room-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === value);
+            });
+            checkCanSubmit();
+        }
+
+        function selectZodiac(value) {
+            if (selectedZodiac === value) {
+                selectedZodiac = '';
+            } else {
+                selectedZodiac = value;
+            }
+            document.querySelectorAll('.zodiac-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === selectedZodiac);
+            });
+        }
+
+        function selectWish(value) {
+            if (selectedWishes.includes(value)) {
+                selectedWishes = selectedWishes.filter(w => w !== value);
+            } else if (selectedWishes.length < 2) {
+                selectedWishes.push(value);
+            }
+            document.querySelectorAll('.wish-btn').forEach(btn => {
+                btn.classList.toggle('active', selectedWishes.includes(btn.dataset.value));
+            });
+        }
+
+        function checkCanSubmit() {
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = !(selectedDirection && selectedRoom);
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 5000);
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').classList.toggle('show', show);
+            document.getElementById('submitBtn').disabled = show;
+        }
+
+        async function getRecommendation() {
+            if (!selectedDirection || !selectedRoom) {
+                showError('请先选择房屋朝向和房间类型');
+                return;
+            }
+
+            showLoading(true);
+            hideResult();
+
+            try {
+                const res = await fetch('/api/recommend', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        direction: selectedDirection,
+                        room: selectedRoom,
+                        zodiac: selectedZodiac || null,
+                        wishes: selectedWishes
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!data.success) {
+                    showError(data.error);
+                    return;
+                }
+
+                renderResult(data.data);
+            } catch (err) {
+                showError('请求失败，请检查网络后重试');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function hideResult() {
+            document.getElementById('resultSection').classList.remove('show');
+        }
+
+        function renderResult(result) {
+            document.getElementById('resultZodiac').textContent = result.zodiac ? `🐾 ${result.zodiac}年` : '';
+            document.getElementById('resultDirection').textContent = `🏠 ${result.direction}方`;
+            document.getElementById('resultRoom').textContent = `🛋️ ${result.room}`;
+            document.getElementById('resultElement').textContent = `🔮 ${result.element}行`;
+
+            const wishesEl = document.getElementById('resultWishes');
+            if (result.wishes && result.wishes.length > 0) {
+                wishesEl.innerHTML = result.wishes.map(w => `<span class="wish-tag">✨ ${w}</span>`).join('');
+                wishesEl.style.display = 'flex';
+            } else {
+                wishesEl.style.display = 'none';
+            }
+
+            document.getElementById('recommendations').innerHTML = result.recommendations.map(rec => {
+                const wishBadge = rec.matched_wishes && rec.matched_wishes.length > 0
+                    ? `<span class="matched-wish">✨ ${rec.matched_wishes.join('+')}</span>`
+                    : '';
+
+                return `
+                <div class="recommendation-card">
+                    <div class="flower-header">
+                        <span class="flower-name">🌸 ${rec.flower}</span>
+                        ${wishBadge}
+                    </div>
+                    <div class="info-row">
+                        <div class="info-item">颜色: <span>${rec.color}</span></div>
+                        <div class="info-item">五行: <span>${rec.element_match}</span></div>
+                        <div class="info-item">功效: <span>${rec.feng_shui_benefit}</span></div>
+                    </div>
+                    <div class="info-item" style="background: transparent; padding: 0; margin-bottom: 10px;">
+                        摆放位置: <span>${rec.position}</span>
+                    </div>
+                    <div class="reason">💡 ${rec.reason}</div>
+                    ${rec.warnings.length > 0 ? `
+                        <div class="warnings">⚠️ ${rec.warnings.join('；')}</div>
+                    ` : ''}
+                </div>
+                `;
+            }).join('');
+
+            document.getElementById('summary').textContent = result.summary;
+
+            document.getElementById('resultSection').classList.add('show');
+            document.getElementById('resultSection').scrollIntoView({behavior: 'smooth'});
+        }
+
+        init();
+        checkCanSubmit();
+    </script>
+</body>
+</html>
