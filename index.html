@@ -9,22 +9,30 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-dark: #0a0a12;
-            --bg-card: rgba(20, 20, 35, 0.8);
-            --glow-purple: #9d4edd;
-            --glow-cyan: #00d4ff;
-            --glow-gold: #ffd700;
-            --glow-pink: #ff6b9d;
-            --text-primary: #e8e8ff;
-            --text-secondary: #8888aa;
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #121228;
+            --bg-card: rgba(20, 25, 50, 0.7);
+            --bg-card-hover: rgba(30, 35, 65, 0.8);
+            --glow-gold: #f0c674;
+            --glow-purple: #b294bb;
+            --glow-cyan: #8abeb7;
+            --glow-pink: #cc6666;
+            --glow-blue: #81a2be;
+            --gradient-primary: linear-gradient(135deg, #f0c674 0%, #b294bb 50%, #81a2be 100%);
+            --gradient-gold: linear-gradient(135deg, #d4a84b 0%, #f0c674 50%, #ffd700 100%);
+            --gradient-purple: linear-gradient(135deg, #9d7cb8 0%, #b294bb 50%, #c9a0dc 100%);
+            --text-primary: #e8e8f0;
+            --text-secondary: #8a8aa8;
+            --text-muted: #5a5a78;
         }
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: var(--bg-dark);
+            background: var(--bg-primary);
             min-height: 100vh;
             color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .cosmos-bg {
@@ -32,10 +40,10 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: 
-                radial-gradient(ellipse at 20% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 157, 0.08) 0%, transparent 60%),
-                var(--bg-dark);
+                radial-gradient(ellipse at 20% 20%, rgba(157, 78, 221, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(240, 198, 116, 0.04) 0%, transparent 60%),
+                var(--bg-primary);
             z-index: -2;
         }
 
@@ -49,20 +57,19 @@
 
         .particle {
             position: absolute;
-            width: 4px; height: 4px;
-            background: rgba(157, 78, 221, 0.6);
+            width: 3px; height: 3px;
+            background: rgba(240, 198, 116, 0.4);
             border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
-            box-shadow: 0 0 10px var(--glow-purple);
+            animation: float 20s infinite ease-in-out;
+            box-shadow: 0 0 8px rgba(240, 198, 116, 0.6);
         }
 
-        .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: rgba(0, 212, 255, 0.5); box-shadow: 0 0 10px var(--glow-cyan); }
-        .particle:nth-child(3) { left: 40%; animation-delay: -4s; background: rgba(255, 215, 0, 0.5); box-shadow: 0 0 10px var(--glow-gold); }
-        .particle:nth-child(4) { left: 60%; animation-delay: -6s; background: rgba(255, 107, 157, 0.5); box-shadow: 0 0 10px var(--glow-pink); }
-        .particle:nth-child(5) { left: 80%; animation-delay: -8s; }
-        .particle:nth-child(6) { left: 10%; animation-delay: -10s; background: rgba(0, 212, 255, 0.5); }
-        .particle:nth-child(7) { left: 70%; animation-delay: -12s; background: rgba(157, 78, 221, 0.5); }
-        .particle:nth-child(8) { left: 90%; animation-delay: -14s; background: rgba(255, 107, 157, 0.5); }
+        .particle:nth-child(2) { left: 15%; animation-delay: -3s; background: rgba(178, 148, 187, 0.4); box-shadow: 0 0 8px rgba(178, 148, 187, 0.6); }
+        .particle:nth-child(3) { left: 35%; animation-delay: -6s; background: rgba(138, 190, 183, 0.4); box-shadow: 0 0 8px rgba(138, 190, 183, 0.6); }
+        .particle:nth-child(4) { left: 55%; animation-delay: -9s; background: rgba(204, 102, 102, 0.4); box-shadow: 0 0 8px rgba(204, 102, 102, 0.6); }
+        .particle:nth-child(5) { left: 75%; animation-delay: -12s; }
+        .particle:nth-child(6) { left: 10%; animation-delay: -15s; background: rgba(138, 190, 183, 0.4); }
+        .particle:nth-child(7) { left: 65%; animation-delay: -18s; background: rgba(178, 148, 187, 0.4); }
 
         @keyframes float {
             0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
@@ -71,26 +78,8 @@
             100% { opacity: 0; transform: translateY(0) scale(0); }
         }
 
-        .flower-decor {
-            position: fixed;
-            font-size: 120px;
-            opacity: 0.03;
-            z-index: -1;
-            animation: sway 8s infinite ease-in-out;
-        }
-
-        .flower-decor:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
-        .flower-decor:nth-child(2) { top: 20%; right: 8%; animation-delay: -2s; font-size: 80px; }
-        .flower-decor:nth-child(3) { bottom: 30%; left: 3%; animation-delay: -4s; font-size: 100px; }
-        .flower-decor:nth-child(4) { bottom: 10%; right: 5%; animation-delay: -6s; font-size: 90px; }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(-5deg) translateX(0); }
-            50% { transform: rotate(5deg) translateX(10px); }
-        }
-
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -100,58 +89,60 @@
             margin-bottom: 50px;
         }
 
+        .logo-icon {
+            width: 80px; height: 80px;
+            margin: 0 auto 20px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(240, 198, 116, 0.3), inset 0 0 20px rgba(255,255,255,0.1);
+            animation: logoPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(240, 198, 116, 0.3), inset 0 0 20px rgba(255,255,255,0.1); }
+            50% { box-shadow: 0 0 50px rgba(178, 148, 187, 0.4), inset 0 0 30px rgba(255,255,255,0.15); }
+        }
+
+        .logo-icon svg { width: 45px; height: 45px; fill: rgba(255,255,255,0.95); }
+
         .title-main {
             font-family: 'Ma Shan Zheng', cursive;
-            font-size: 4em;
-            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan), var(--glow-gold));
+            font-size: 3.5em;
+            background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 30px rgba(157, 78, 221, 0.5));
-            animation: titleGlow 3s infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            0% { filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.5)); }
-            100% { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.7)); }
+            filter: drop-shadow(0 0 20px rgba(240, 198, 116, 0.3));
+            margin-bottom: 8px;
         }
 
         .title-sub {
-            font-size: 1.2em;
+            font-size: 1em;
             color: var(--text-secondary);
-            margin-top: 10px;
-            letter-spacing: 8px;
+            letter-spacing: 12px;
         }
 
         .title-divider {
-            width: 200px;
+            width: 120px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--glow-purple), var(--glow-cyan), transparent);
-            margin: 20px auto;
-            position: relative;
-        }
-
-        .title-divider::before {
-            content: '✦';
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--bg-dark);
-            padding: 0 15px;
-            color: var(--glow-cyan);
-            font-size: 1.2em;
+            background: var(--gradient-primary);
+            margin: 25px auto;
+            border-radius: 1px;
         }
 
         .card {
             background: var(--bg-card);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(240, 198, 116, 0.1);
             border-radius: 24px;
-            padding: 35px;
+            padding: 30px;
             margin-bottom: 25px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card::before {
@@ -159,12 +150,14 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.5), transparent);
+            background: var(--gradient-primary);
+            opacity: 0.5;
         }
 
         .card:hover {
-            border-color: rgba(157, 78, 221, 0.4);
-            box-shadow: 0 0 40px rgba(157, 78, 221, 0.15);
+            border-color: rgba(240, 198, 116, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(240, 198, 116, 0.1);
+            transform: translateY(-2px);
         }
 
         .section-title {
@@ -177,501 +170,268 @@
             font-weight: 500;
         }
 
-        .section-title::before {
-            content: '';
-            width: 4px; height: 20px;
-            background: linear-gradient(180deg, var(--glow-purple), var(--glow-cyan));
-            border-radius: 2px;
+        .section-icon {
+            width: 32px; height: 32px;
+            background: rgba(240, 198, 116, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(240, 198, 116, 0.2);
         }
 
-        .direction-grid {
+        .section-icon svg { width: 18px; height: 18px; fill: var(--glow-gold); }
+
+        .direction-grid, .room-grid, .zodiac-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
 
-        .direction-btn {
-            padding: 15px 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(157, 78, 221, 0.2);
+        .direction-btn, .room-btn, .zodiac-btn {
+            padding: 18px 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(138, 190, 183, 0.15);
             border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
         }
 
-        .direction-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
+        .direction-btn:hover, .room-btn:hover, .zodiac-btn:hover {
+            border-color: rgba(138, 190, 183, 0.4);
+            background: rgba(138, 190, 183, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .direction-btn.active, .room-btn.active, .zodiac-btn.active {
+            border-color: var(--glow-cyan);
+            background: rgba(138, 190, 183, 0.15);
+            box-shadow: 0 0 20px rgba(138, 190, 183, 0.3), inset 0 0 20px rgba(138, 190, 183, 0.1);
+        }
+
+        .direction-icon, .room-icon, .zodiac-icon {
+            width: 32px; height: 32px;
+        }
+
+        .direction-icon svg, .room-icon svg, .zodiac-icon svg {
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(157, 78, 221, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .direction-btn:hover::before { left: 100%; }
-
-        .direction-btn:hover {
-            border-color: var(--glow-purple);
-            background: rgba(157, 78, 221, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
-        }
-
-        .direction-btn.active {
-            border-color: var(--glow-purple);
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.2));
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
-        }
-
-        .direction-btn .dir-name {
-            font-size: 1.3em;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .direction-btn .element {
-            font-size: 0.75em;
-            color: var(--glow-cyan);
+            fill: var(--glow-cyan);
             opacity: 0.8;
-        }
-
-        .room-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .room-btn {
-            padding: 15px 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 16px;
-            cursor: pointer;
             transition: all 0.3s;
-            text-align: center;
-            font-size: 0.95em;
         }
 
-        .room-btn:hover {
-            border-color: var(--glow-cyan);
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        .direction-btn:hover .direction-icon svg,
+        .room-btn:hover .room-icon svg,
+        .zodiac-btn:hover .zodiac-icon svg,
+        .direction-btn.active .direction-icon svg,
+        .room-btn.active .room-icon svg,
+        .zodiac-btn.active .zodiac-icon svg {
+            fill: var(--glow-gold);
+            opacity: 1;
+            filter: drop-shadow(0 0 8px rgba(240, 198, 116, 0.5));
         }
 
-        .room-btn.active {
-            border-color: var(--glow-cyan);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 180, 200, 0.15));
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        .direction-btn .dir-name, .room-name, .zodiac-name {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .zodiac-section {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.05), rgba(157, 78, 221, 0.08));
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 107, 157, 0.15);
-        }
-
-        .zodiac-section .hint {
-            text-align: center;
+        .direction-btn .element, .zodiac-element {
+            font-size: 0.7em;
             color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 0.9em;
         }
-
-        .zodiac-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .zodiac-btn {
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .zodiac-btn:hover {
-            border-color: var(--glow-gold);
-            background: rgba(255, 215, 0, 0.1);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-        }
-
-        .zodiac-btn.active {
-            border-color: var(--glow-gold);
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 180, 0, 0.15));
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .zodiac-btn .zodiac-icon {
-            font-size: 1.8em;
-            display: block;
-            margin-bottom: 4px;
-            filter: grayscale(0.5);
-            transition: filter 0.3s;
-        }
-
-        .zodiac-btn:hover .zodiac-icon,
-        .zodiac-btn.active .zodiac-icon {
-            filter: grayscale(0) drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
-        }
-
-        .zodiac-btn .zodiac-name { font-weight: 600; font-size: 0.9em; }
-        .zodiac-btn .zodiac-element { font-size: 0.7em; color: var(--glow-gold); opacity: 0.8; }
 
         .wish-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .wish-btn {
-            padding: 20px 15px;
+            padding: 18px 16px;
             background: rgba(255, 255, 255, 0.02);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            border: 1px solid rgba(204, 102, 102, 0.15);
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
-
-        .wish-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .wish-btn:hover::after { opacity: 1; }
 
         .wish-btn:hover {
-            transform: translateY(-5px);
-            border-color: var(--glow-pink);
-            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.25);
+            border-color: rgba(204, 102, 102, 0.4);
+            background: rgba(204, 102, 102, 0.08);
+            transform: translateY(-2px);
         }
 
         .wish-btn.active {
             border-color: var(--glow-pink);
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(200, 100, 150, 0.15));
-            box-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+            background: rgba(204, 102, 102, 0.15);
+            box-shadow: 0 0 25px rgba(204, 102, 102, 0.2);
         }
 
-        .wish-btn .wish-icon {
-            font-size: 2.2em;
-            display: block;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.3));
+        .wish-icon-wrap {
+            width: 44px; height: 44px;
+            background: rgba(204, 102, 102, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(204, 102, 102, 0.2);
         }
 
-        .wish-btn.active .wish-icon { animation: pulse 1.5s infinite; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .wish-btn.active .wish-icon-wrap {
+            background: rgba(240, 198, 116, 0.15);
+            border-color: rgba(240, 198, 116, 0.3);
         }
 
-        .wish-btn .wish-name { font-weight: 700; font-size: 1.1em; display: block; margin-bottom: 4px; }
-        .wish-btn .wish-desc { font-size: 0.8em; color: var(--text-secondary); }
+        .wish-icon { width: 24px; height: 24px; }
+        .wish-icon svg { width: 100%; height: 100%; fill: var(--glow-pink); opacity: 0.8; }
+        .wish-btn:hover .wish-icon svg, .wish-btn.active .wish-icon svg { fill: var(--glow-gold); opacity: 1; }
+
+        .wish-name { font-weight: 600; font-size: 1em; color: var(--text-primary); margin-bottom: 2px; }
+        .wish-desc { font-size: 0.75em; color: var(--text-secondary); }
+
+        .submit-section { margin-top: 30px; }
 
         .submit-btn {
             width: 100%;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(0, 212, 255, 0.2));
-            border: 2px solid var(--glow-purple);
-            color: white;
-            border-radius: 20px;
+            background: var(--gradient-gold);
+            border: none;
+            border-radius: 16px;
             font-size: 1.2em;
-            font-weight: 700;
+            font-weight: 600;
+            color: rgba(10, 10, 26, 0.9);
             cursor: pointer;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 4px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 2px;
         }
 
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-3px);
-            box-shadow: 0 0 50px rgba(157, 78, 221, 0.5);
-            border-color: var(--glow-cyan);
+            box-shadow: 0 15px 40px rgba(240, 198, 116, 0.3), 0 0 60px rgba(240, 198, 116, 0.2);
         }
 
         .submit-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
         }
 
-        .submit-btn:disabled::before { animation: none; }
-
-        .result-section { display: none; }
-        .result-section.show { display: block; animation: fadeInUp 0.6s ease; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .loading { display: none; text-align: center; padding: 40px; }
+        .loading.show { display: block; }
+        .loading-spinner {
+            width: 60px; height: 60px;
+            margin: 0 auto 20px;
+            position: relative;
         }
+        .loading-spinner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 3px solid rgba(240, 198, 116, 0.2);
+            border-top-color: var(--glow-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--text-secondary); }
+
+        .result-section { display: none; animation: fadeIn 0.6s ease; }
+        .result-section.show { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .result-header {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 212, 255, 0.15));
-            border: 1px solid rgba(157, 78, 221, 0.3);
-            padding: 30px;
-            border-radius: 24px;
-            margin-bottom: 25px;
             text-align: center;
-        }
-
-        .result-header h3 {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 2.5em;
-            background: linear-gradient(135deg, var(--glow-gold), var(--glow-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        .result-header .tags {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .result-header .tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.95em;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .result-header .wish-tags {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .result-header .wish-tag {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(200, 100, 150, 0.2));
-            padding: 6px 16px;
-            border-radius: 25px;
-            font-size: 0.9em;
-            border: 1px solid rgba(255, 107, 157, 0.4);
-        }
-
-        .recommendation-card {
-            background: linear-gradient(135deg, rgba(20, 20, 35, 0.9), rgba(30, 25, 50, 0.9));
-            border: 1px solid rgba(157, 78, 221, 0.2);
-            border-radius: 20px;
             padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease backwards;
+            background: linear-gradient(135deg, rgba(240, 198, 116, 0.1), rgba(178, 148, 187, 0.1));
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(240, 198, 116, 0.2);
         }
 
-        .recommendation-card:nth-child(1) { animation-delay: 0.1s; }
-        .recommendation-card:nth-child(2) { animation-delay: 0.2s; }
-        .recommendation-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .recommendation-card::before {
-            content: '🌸';
-            position: absolute;
-            top: 10px; right: 15px;
-            font-size: 2em;
-            opacity: 0.1;
-        }
-
-        .recommendation-card .flower-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .recommendation-card .flower-name {
-            font-size: 1.6em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, var(--glow-cyan));
+        .result-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8em;
+            background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
-        .recommendation-card .matched-wish {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.4), rgba(200, 100, 150, 0.3));
-            padding: 4px 14px;
+        .result-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .result-tag {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(240, 198, 116, 0.2);
             border-radius: 20px;
             font-size: 0.85em;
-            border: 1px solid rgba(255, 107, 157, 0.5);
-        }
-
-        .recommendation-card .info-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .recommendation-card .info-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 12px;
-            font-size: 0.9em;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .recommendation-card .info-item span {
-            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-        }
-
-        .recommendation-card .reason {
             color: var(--text-secondary);
-            line-height: 1.8;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(157, 78, 221, 0.05);
-            border-radius: 12px;
-            border-left: 3px solid var(--glow-purple);
-            font-size: 0.95em;
         }
+        .result-tag.highlight { background: rgba(240, 198, 116, 0.1); border-color: rgba(240, 198, 116, 0.4); color: var(--glow-gold); }
 
-        .recommendation-card .warnings {
-            color: #ff6b6b;
-            font-size: 0.9em;
-            margin-top: 12px;
-            padding: 10px 15px;
-            background: rgba(255, 107, 107, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 107, 107, 0.2);
-        }
-
-        .summary {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 180, 0, 0.05));
-            padding: 25px;
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(240, 198, 116, 0.15);
             border-radius: 20px;
-            margin-top: 25px;
-            text-align: center;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            border: 1px dashed rgba(255, 215, 0, 0.3);
-            font-size: 0.95em;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px;
-            display: none;
-        }
-
-        .loading.show { display: block; }
-
-        .loading-orb {
-            width: 80px; height: 80px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
-            animation: orbPulse 2s infinite ease-in-out;
-            box-shadow: 0 0 60px rgba(157, 78, 221, 0.5);
-            position: relative;
-        }
-
-        .loading-orb::before {
-            content: '🌸';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2em;
-            animation: spin 3s linear infinite;
-        }
-
-        @keyframes orbPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes spin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .loading p { color: var(--text-secondary); font-size: 1.1em; }
-
-        .error-msg {
-            background: rgba(255, 107, 107, 0.15);
-            color: #ff6b6b;
-            padding: 15px 20px;
-            border-radius: 12px;
+            padding: 25px;
             margin-bottom: 20px;
-            display: none;
-            border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: all 0.3s;
+        }
+        .recommendation-card:hover { border-color: rgba(240, 198, 116, 0.3); background: rgba(255, 255, 255, 0.05); transform: translateY(-2px); }
+
+        .flower-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .flower-name { font-size: 1.4em; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 10px; }
+        .flower-icon { width: 32px; height: 32px; }
+        .flower-icon svg { width: 100%; height: 100%; fill: var(--glow-gold); }
+
+        .matched-wish {
+            padding: 4px 12px;
+            background: rgba(204, 102, 102, 0.15);
+            border: 1px solid rgba(204, 102, 102, 0.3);
+            border-radius: 12px;
+            font-size: 0.75em;
+            color: var(--glow-pink);
         }
 
-        .error-msg.show { display: block; animation: shake 0.5s ease; }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .flower-reason { color: var(--text-secondary); font-size: 0.95em; line-height: 1.7; margin-bottom: 15px; }
+        .flower-details { display: flex; flex-wrap: wrap; gap: 8px; }
+        .detail-tag {
+            padding: 5px 12px;
+            background: rgba(138, 190, 183, 0.1);
+            border: 1px solid rgba(138, 190, 183, 0.2);
+            border-radius: 8px;
+            font-size: 0.8em;
+            color: var(--glow-cyan);
         }
 
-        @media (max-width: 768px) {
-            .title-main { font-size: 2.8em; }
-            .title-sub { font-size: 1em; letter-spacing: 4px; }
-            .card { padding: 25px 20px; }
-            .direction-grid, .room-grid { grid-template-columns: repeat(3, 1fr); }
-            .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
-            .wish-grid { grid-template-columns: repeat(2, 1fr); }
-            .result-header h3 { font-size: 2em; }
-        }
+        .error-msg { display: none; padding: 15px 20px; background: rgba(204, 102, 102, 0.1); border: 1px solid rgba(204, 102, 102, 0.3); border-radius: 12px; color: var(--glow-pink); margin-bottom: 20px; text-align: center; }
+        .error-msg.show { display: block; }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .container { padding: 20px 15px; }
-            .title-main { font-size: 2.2em; }
-            .direction-grid, .room-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
-            .wish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .title-main { font-size: 2.5em; }
+            .card { padding: 20px; }
+            .direction-grid, .room-grid, .zodiac-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .wish-grid { grid-template-columns: 1fr; }
+            .direction-btn { padding: 14px 6px; }
         }
     </style>
 </head>
 <body>
     <div class="cosmos-bg"></div>
     <div class="particles">
-        <div class="particle" style="left: 5%;"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -680,425 +440,375 @@
         <div class="particle"></div>
         <div class="particle"></div>
     </div>
-    <div class="flower-decor">🌸</div>
-    <div class="flower-decor">🌺</div>
-    <div class="flower-decor">🌷</div>
-    <div class="flower-decor">🌹</div>
 
     <div class="container">
-        <div class="header">
+        <header class="header">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
             <h1 class="title-main">玄花秘典</h1>
-            <p class="title-sub">风水花卉智能推荐系统</p>
+            <p class="title-sub">风水花卉智能推荐</p>
             <div class="title-divider"></div>
-        </div>
+        </header>
+
+        <div id="errorMsg" class="error-msg"></div>
 
         <div class="card">
-            <div class="section-title">🏠 选择房屋朝向</div>
+            <div class="section-title">
+                <div class="section-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                选择房屋朝向
+            </div>
             <div class="direction-grid" id="directionGrid"></div>
-
-            <div style="margin-top: 25px;">
-                <div class="section-title">🛋️ 选择房间类型</div>
-                <div class="room-grid" id="roomGrid"></div>
-            </div>
         </div>
 
         <div class="card">
-            <div class="zodiac-section">
-                <div class="section-title">🐾 您的生肖</div>
-                <p class="hint">选择您的生肖，系统将根据五行相生为您推荐</p>
-                <div class="zodiac-grid" id="zodiacGrid"></div>
+            <div class="section-title">
+                <div class="section-icon"><svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg></div>
+                选择房间类型
             </div>
+            <div class="room-grid" id="roomGrid"></div>
+        </div>
 
-            <div class="section-title">✨ 您的诉求（可选，最多2项）</div>
+        <div class="card">
+            <div class="section-title">
+                <div class="section-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
+                您的生肖（可选）
+            </div>
+            <div class="zodiac-grid" id="zodiacGrid"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <div class="section-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+                您的诉求（可选，最多2项）
+            </div>
             <div class="wish-grid" id="wishGrid"></div>
-
-            <div class="error-msg" id="errorMsg"></div>
-
-            <button class="submit-btn" id="submitBtn" onclick="getRecommendation()">
-                🔮 开始智能推荐
-            </button>
         </div>
 
-        <div class="card loading" id="loading">
-            <div class="loading-orb"></div>
-            <p>正在为您开启风水秘典...</p>
+        <div class="submit-section">
+            <button id="submitBtn" class="submit-btn" onclick="getRecommendation()" disabled>获取玄花秘典指引</button>
         </div>
 
-        <div class="card result-section" id="resultSection">
-            <div class="result-header" id="resultHeader">
-                <h3>🌸 秘典指引</h3>
-                <div class="tags">
-                    <span class="tag" id="resultZodiac"></span>
-                    <span class="tag" id="resultDirection"></span>
-                    <span class="tag" id="resultRoom"></span>
-                    <span class="tag" id="resultElement"></span>
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">秘典推演中...</p>
+        </div>
+
+        <div id="resultSection" class="result-section">
+            <div class="card">
+                <div class="result-header">
+                    <h3 class="result-title">为您推荐的花卉</h3>
+                    <div class="result-tags">
+                        <span id="resultZodiac" class="result-tag"></span>
+                        <span id="resultDirection" class="result-tag"></span>
+                        <span id="resultRoom" class="result-tag"></span>
+                        <span id="resultElement" class="result-tag highlight"></span>
+                    </div>
+                    <div id="resultWishes" class="result-tags" style="margin-top: 10px;"></div>
                 </div>
-                <div class="wish-tags" id="resultWishes"></div>
+                <div id="recommendations"></div>
             </div>
-            <div id="recommendations"></div>
-            <div class="summary" id="summary"></div>
         </div>
     </div>
 
     <script>
-    // ==================== 风水花卉推荐引擎 ====================
-
-    const DIRECTIONS = [
-        { value: "东", element: "木", colors: "青绿" },
-        { value: "东南", element: "木", colors: "青绿" },
-        { value: "南", element: "火", colors: "红紫" },
-        { value: "西南", element: "土", colors: "黄棕" },
-        { value: "西", element: "金", colors: "白金" },
-        { value: "西北", element: "金", colors: "白金" },
-        { value: "北", element: "水", colors: "蓝黑" },
-        { value: "东北", element: "土", colors: "黄咖" },
-        { value: "中", element: "土", colors: "黄紫" },
-    ];
-
-    const ROOMS = [
-        { value: "客厅", label: "客厅" },
-        { value: "卧室", label: "卧室" },
-        { value: "书房", label: "书房" },
-        { value: "厨房", label: "厨房" },
-        { value: "卫生间", label: "卫生间" },
-        { value: "阳台", label: "阳台" },
-        { value: "玄关", label: "玄关" },
-        { value: "餐厅", label: "餐厅" },
-    ];
-
-    const ZODIACS = [
-        { value: "鼠", icon: "🐭", element: "水" },
-        { value: "牛", icon: "🐮", element: "土" },
-        { value: "虎", icon: "🐯", element: "木" },
-        { value: "兔", icon: "🐰", element: "木" },
-        { value: "龙", icon: "🐉", element: "土" },
-        { value: "蛇", icon: "🐍", element: "火" },
-        { value: "马", icon: "🐴", element: "火" },
-        { value: "羊", icon: "🐑", element: "土" },
-        { value: "猴", icon: "🐵", element: "金" },
-        { value: "鸡", icon: "🐔", element: "金" },
-        { value: "狗", icon: "🐶", element: "土" },
-        { value: "猪", icon: "🐷", element: "水" },
-    ];
-
-    const WISHES = [
-        { value: "招财", icon: "💰", desc: "财运亨通" },
-        { value: "桃花", icon: "🌸", desc: "姻缘感情" },
-        { value: "事业", icon: "📈", desc: "学业事业" },
-        { value: "健康", icon: "🏥", desc: "身心康健" },
-    ];
-
-    const FLOWER_DATABASE = {
-        "绿萝": { element: "木", colors: ["绿"], feng_shui: "旺财、净化空气", toxic: false, difficulty: 1, positions: ["客厅", "书房", "卫生间"], wishes: ["招财", "健康"] },
-        "吊兰": { element: "木", colors: ["绿", "白"], feng_shui: "去煞气、旺宅", toxic: false, difficulty: 1, positions: ["客厅", "阳台", "卧室"], wishes: ["健康", "招财"] },
-        "文竹": { element: "木", colors: ["绿"], feng_shui: "旺文昌、利学业", toxic: false, difficulty: 3, positions: ["书房", "客厅"], wishes: ["事业"] },
-        "虎皮兰": { element: "金", colors: ["绿", "黄"], feng_shui: "旺财、去煞气", toxic: false, difficulty: 1, positions: ["客厅", "卧室", "玄关"], wishes: ["招财", "健康"] },
-        "发财树": { element: "木", colors: ["绿"], feng_shui: "旺财、旺事业", toxic: false, difficulty: 2, positions: ["客厅", "办公室"], wishes: ["招财", "事业"] },
-        "幸福树": { element: "木", colors: ["绿"], feng_shui: "家庭和睦、旺宅", toxic: false, difficulty: 2, positions: ["客厅", "阳台"], wishes: ["健康", "桃花"] },
-        "平安树": { element: "木", colors: ["绿"], feng_shui: "保平安、护健康", toxic: false, difficulty: 2, positions: ["客厅", "玄关"], wishes: ["健康", "招财"] },
-        "鸿运当头": { element: "火", colors: ["红"], feng_shui: "招好运、旺家运", toxic: false, difficulty: 2, positions: ["客厅", "卧室"], wishes: ["招财", "事业", "桃花"] },
-        "红掌": { element: "火", colors: ["红"], feng_shui: "招财、旺人缘", toxic: true, difficulty: 2, positions: ["客厅", "办公室"], wishes: ["招财", "事业"] },
-        "白掌": { element: "金", colors: ["白"], feng_shui: "事业顺利、一帆风顺", toxic: false, difficulty: 1, positions: ["客厅", "书房"], wishes: ["事业", "健康"] },
-        "君子兰": { element: "火", colors: ["红", "黄"], feng_shui: "旺家运、利人际关系", toxic: false, difficulty: 3, positions: ["客厅", "书房"], wishes: ["事业", "桃花", "健康"] },
-        "蝴蝶兰": { element: "木", colors: ["粉", "紫"], feng_shui: "旺姻缘、增感情", toxic: false, difficulty: 4, positions: ["客厅", "卧室"], wishes: ["桃花", "健康"] },
-        "茉莉花": { element: "金", colors: ["白"], feng_shui: "旺感情、添香气", toxic: false, difficulty: 3, positions: ["阳台", "庭院"], wishes: ["桃花", "健康"] },
-        "栀子花": { element: "金", colors: ["白"], feng_shui: "旺桃花、旺学业", toxic: false, difficulty: 3, positions: ["阳台", "庭院"], wishes: ["桃花", "事业"] },
-        "薄荷": { element: "木", colors: ["绿"], feng_shui: "去晦气、清醒头脑", toxic: false, difficulty: 1, positions: ["厨房", "阳台"], wishes: ["健康", "事业"] },
-        "铜钱草": { element: "水", colors: ["绿"], feng_shui: "旺财、水生金", toxic: false, difficulty: 1, positions: ["客厅", "书房"], wishes: ["招财"] },
-        "水仙": { element: "水", colors: ["白", "黄"], feng_shui: "旺文才、增智慧", toxic: true, difficulty: 2, positions: ["客厅", "书房"], wishes: ["事业"] },
-        "风信子": { element: "水", colors: ["蓝", "紫"], feng_shui: "旺事业、聚人气", toxic: true, difficulty: 2, positions: ["阳台", "窗台"], wishes: ["事业", "桃花"] },
-        "仙人掌": { element: "金", colors: ["绿"], feng_shui: "防辐射、去煞气", toxic: false, difficulty: 1, positions: ["阳台", "书桌"], wishes: ["健康"] },
-        "多肉植物": { element: "金", colors: ["绿", "红", "黄"], feng_shui: "旺土气、防小人", toxic: false, difficulty: 1, positions: ["阳台", "书桌"], wishes: ["健康", "招财"] },
-        "月季": { element: "火", colors: ["红", "粉"], feng_shui: "旺姻缘、添魅力", toxic: false, difficulty: 2, positions: ["阳台", "庭院"], wishes: ["桃花", "健康"] },
-        "绣球": { element: "火", colors: ["蓝", "粉"], feng_shui: "旺人缘、助姻缘", toxic: false, difficulty: 2, positions: ["阳台", "庭院"], wishes: ["桃花", "健康"] },
-        "三角梅": { element: "火", colors: ["红", "紫"], feng_shui: "旺财运、增活力", toxic: false, difficulty: 1, positions: ["阳台", "庭院"], wishes: ["招财", "事业"] },
-        "常春藤": { element: "木", colors: ["绿"], feng_shui: "去煞气、保平安", toxic: false, difficulty: 1, positions: ["客厅", "阳台"], wishes: ["健康", "事业"] },
-        "龟背竹": { element: "木", colors: ["绿"], feng_shui: "旺健康、增福寿", toxic: false, difficulty: 2, positions: ["客厅", "卧室"], wishes: ["健康", "招财"] },
-        "薰衣草": { element: "火", colors: ["紫"], feng_shui: "助睡眠、旺姻缘", toxic: false, difficulty: 3, positions: ["卧室", "阳台"], wishes: ["桃花", "健康"] },
-        "黄金葛": { element: "木", colors: ["绿", "黄"], feng_shui: "旺财、水生金", toxic: false, difficulty: 1, positions: ["客厅", "书房"], wishes: ["招财"] },
-        "万年青": { element: "土", colors: ["绿"], feng_shui: "旺宅、保平安", toxic: true, difficulty: 1, positions: ["客厅", "玄关"], wishes: ["健康", "事业"] },
-        "富贵竹": { element: "木", colors: ["绿"], feng_shui: "旺财、旺学业", toxic: false, difficulty: 1, positions: ["客厅", "书房"], wishes: ["招财", "事业"] },
-    };
-
-    const ROOM_RESTRICTIONS = {
-        "卧室": { avoid: ["仙人掌"] },
-        "厨房": { avoid: ["水仙", "风信子"] },
-        "书房": { avoid: ["仙人掌"] },
-    };
-
-    const ELEMENT_COLORS = {
-        "木": "青绿色系",
-        "火": "红紫色系",
-        "土": "黄棕色系",
-        "金": "白金色系",
-        "水": "蓝黑色系",
-    };
-
-    const ELEMENT_GENERATING = { "木": "水", "火": "木", "土": "火", "金": "土", "水": "金" };
-    const ELEMENT_EXTRACTING = { "木": "金", "火": "水", "土": "木", "金": "火", "水": "土" };
-
-    // ==================== 推荐函数 ====================
-
-    function recommend(direction, room, zodiac, wishes) {
-        const dir = DIRECTIONS.find(d => d.value === direction) || DIRECTIONS[0];
-        const dirElement = dir.element;
-        const userElement = zodiac ? ZODIACS.find(z => z.value === zodiac)?.element : null;
-        const effectiveElement = userElement || dirElement;
-
-        // 筛选候选花
-        let candidates = Object.entries(FLOWER_DATABASE)
-            .filter(([name, f]) => f.positions.includes(room))
-            .filter(([name]) => !ROOM_RESTRICTIONS[room]?.avoid.includes(name))
-            .map(([name, f]) => ({ name, ...f }));
-
-        if (candidates.length === 0) {
-            candidates = Object.entries(FLOWER_DATABASE)
-                .filter(([name]) => !ROOM_RESTRICTIONS[room]?.avoid.includes(name))
-                .map(([name, f]) => ({ name, ...f }));
-        }
-
-        // 评分
-        const scored = candidates.map(flower => {
-            let score = 0;
-            const matchedWishes = [];
-
-            // 五行匹配（同属性 +10，相生 +8，被相生 +5）
-            if (flower.element === effectiveElement) score += 10;
-            else if (ELEMENT_GENERATING[effectiveElement] === flower.element) score += 8;
-            else if (ELEMENT_GENERATING[flower.element] === effectiveElement) score += 5;
-
-            // 方位颜色匹配
-            if (flower.colors.some(c => dir.colors.includes(c))) score += 5;
-
-            // 生肖五行匹配
-            if (userElement && flower.element === userElement) score += 5;
-
-            // 诉求匹配（最重要）
-            wishes.forEach(w => {
-                if (flower.wishes.includes(w)) {
-                    matchedWishes.push(w);
-                    score += 15;
-                }
-            });
-
-            return { flower, score, matchedWishes };
-        });
-
-        // 排序取前3
-        scored.sort((a, b) => b.score - a.score);
-        const top3 = scored.slice(0, 3);
-
-        // 生成推荐结果
-        const recommendations = top3.map(item => {
-            const f = item.flower;
-            const position = ROOM_RESTRICTIONS[room]?.avoid.length
-                ? f.positions.find(p => p === room) || f.positions[0]
-                : f.positions[0];
-
-            let reason = `「${direction}」属${dirElement}性，${ELEMENT_COLORS[dirElement]}最能助运。`;
-            if (zodiac) reason += `您属${zodiac}（${userElement}行），${f.name}属${f.element}性，`;
-            reason += item.matchedWishes.length > 0
-                ? `契合您的${item.matchedWishes.join('、')}诉求。`
-                : `与您的气场相生相助，带来整体运势提升。`;
-
-            const warnings = [];
-            if (f.toxic) warnings.push(`${f.name}有一定毒性，请避免误食`);
-            if (f.difficulty >= 3) warnings.push(`${f.name}养护难度较高，需细心照料`);
-
-            return {
-                flower: f.name,
-                color: f.colors.join('、'),
-                position,
-                reason,
-                element_match: `${f.element}行`,
-                feng_shui_benefit: f.feng_shui,
-                matched_wishes: item.matchedWishes,
-                warnings,
-            };
-        });
-
-        // 总结
-        let summary = `根据您的「${direction}」朝向和「${room}」环境`;
-        if (zodiac) summary += `，配合您属${zodiac}的五行命理`;
-        if (wishes.length > 0) summary += `，重点强化${wishes.join('、')}运势`;
-        summary += `，为您推荐以上花卉。摆放于最佳位置，静待花开，好运自来。`;
-
-        return {
-            direction,
-            room,
-            element: effectiveElement,
-            zodiac: zodiac || null,
-            wishes,
-            recommendations,
-            summary,
+        // ============ 风水花卉推荐引擎 ============
+        const FLOWER_DATABASE = {
+            "绿萝": { element: "木", colors: ["绿"], feng_shui: "旺财、净化空气", wishes: ["招财", "健康"], positions: ["客厅", "书房", "卫生间"] },
+            "吊兰": { element: "木", colors: ["绿", "白"], feng_shui: "去煞气、旺宅", wishes: ["健康", "招财"], positions: ["客厅", "阳台", "卧室"] },
+            "文竹": { element: "木", colors: ["绿"], feng_shui: "旺文昌、利学业", wishes: ["事业"], positions: ["书房", "客厅"] },
+            "虎皮兰": { element: "金", colors: ["绿", "黄"], feng_shui: "旺财、去煞气", wishes: ["招财", "健康"], positions: ["客厅", "卧室", "玄关"] },
+            "发财树": { element: "木", colors: ["绿"], feng_shui: "旺财、旺事业", wishes: ["招财", "事业"], positions: ["客厅", "办公室"] },
+            "幸福树": { element: "木", colors: ["绿"], feng_shui: "家庭和睦、旺宅", wishes: ["健康", "桃花"], positions: ["客厅", "阳台"] },
+            "平安树": { element: "木", colors: ["绿"], feng_shui: "保平安、护健康", wishes: ["健康", "招财"], positions: ["客厅", "玄关"] },
+            "鸿运当头": { element: "火", colors: ["红"], feng_shui: "招好运、旺家运", wishes: ["招财", "事业", "桃花"], positions: ["客厅", "卧室"] },
+            "红掌": { element: "火", colors: ["红"], feng_shui: "招财、旺人缘", wishes: ["招财", "事业"], positions: ["客厅", "办公室"] },
+            "白掌": { element: "金", colors: ["白"], feng_shui: "事业顺利、一帆风顺", wishes: ["事业", "健康"], positions: ["客厅", "书房"] },
+            "君子兰": { element: "火", colors: ["红", "黄"], feng_shui: "旺家运、利人际关系", wishes: ["事业", "桃花", "健康"], positions: ["客厅", "书房"] },
+            "蝴蝶兰": { element: "木", colors: ["粉", "紫"], feng_shui: "旺姻缘、增感情", wishes: ["桃花", "健康"], positions: ["客厅", "卧室"] },
+            "茉莉花": { element: "金", colors: ["白"], feng_shui: "旺感情、添香气", wishes: ["桃花", "健康"], positions: ["阳台", "庭院"] },
+            "栀子花": { element: "金", colors: ["白"], feng_shui: "旺桃花、旺学业", wishes: ["桃花", "事业"], positions: ["阳台", "庭院"] },
+            "薄荷": { element: "木", colors: ["绿"], feng_shui: "去晦气、清醒头脑", wishes: ["健康", "事业"], positions: ["厨房", "阳台"] },
+            "铜钱草": { element: "水", colors: ["绿"], feng_shui: "旺财、水生金", wishes: ["招财"], positions: ["客厅", "书房"] },
+            "水仙": { element: "水", colors: ["白", "黄"], feng_shui: "旺文才、增智慧", wishes: ["事业"], positions: ["客厅", "书房"] },
+            "风信子": { element: "水", colors: ["蓝", "紫"], feng_shui: "旺事业、聚人气", wishes: ["事业", "桃花"], positions: ["阳台", "窗台"] },
+            "仙人掌": { element: "金", colors: ["绿"], feng_shui: "防辐射、去煞气", wishes: ["健康"], positions: ["阳台", "书桌"] },
+            "多肉植物": { element: "金", colors: ["绿", "红", "黄"], feng_shui: "旺土气、防小人", wishes: ["健康", "招财"], positions: ["阳台", "书桌"] },
+            "月季": { element: "火", colors: ["红", "粉"], feng_shui: "旺姻缘、添魅力", wishes: ["桃花", "健康"], positions: ["阳台", "庭院"] },
+            "绣球": { element: "火", colors: ["蓝", "粉"], feng_shui: "旺人缘、助姻缘", wishes: ["桃花", "健康"], positions: ["阳台", "庭院"] },
+            "三角梅": { element: "火", colors: ["红", "紫"], feng_shui: "旺财运、增活力", wishes: ["招财", "事业"], positions: ["阳台", "庭院"] },
+            "常春藤": { element: "木", colors: ["绿"], feng_shui: "去煞气、保平安", wishes: ["健康", "事业"], positions: ["客厅", "阳台"] },
+            "龟背竹": { element: "木", colors: ["绿"], feng_shui: "旺健康、增福寿", wishes: ["健康", "招财"], positions: ["客厅", "卧室"] },
+            "薰衣草": { element: "火", colors: ["紫"], feng_shui: "助睡眠、旺姻缘", wishes: ["桃花", "健康"], positions: ["卧室", "阳台"] },
+            "黄金葛": { element: "木", colors: ["绿", "黄"], feng_shui: "旺财、水生金", wishes: ["招财"], positions: ["客厅", "书房"] },
+            "万年青": { element: "土", colors: ["绿"], feng_shui: "旺宅、保平安", wishes: ["健康", "事业"], positions: ["客厅", "玄关"] },
+            "富贵竹": { element: "木", colors: ["绿"], feng_shui: "旺财、旺学业", wishes: ["招财", "事业"], positions: ["客厅", "书房"] }
         };
-    }
 
-    // ==================== UI 逻辑 ====================
+        const DIRECTION_ELEMENTS = {
+            "东": "木", "东南": "木", "南": "火", "西南": "土",
+            "西": "金", "西北": "金", "北": "水", "东北": "土", "中": "土"
+        };
 
-    let selectedDirection = '';
-    let selectedRoom = '';
-    let selectedZodiac = '';
-    let selectedWishes = [];
+        const ZODIAC_ELEMENTS = {
+            "鼠": "水", "牛": "土", "虎": "木", "兔": "木",
+            "龙": "土", "蛇": "火", "马": "火", "羊": "土",
+            "猴": "金", "鸡": "金", "狗": "土", "猪": "水"
+        };
 
-    function init() {
-        renderDirections();
-        renderRooms();
-        renderZodiacs();
-        renderWishes();
-    }
+        const ROOM_RESTRICTIONS = {
+            "卧室": ["仙人掌"],
+            "厨房": ["水仙", "风信子"],
+            "卫生间": [],
+            "书房": ["仙人掌"]
+        };
 
-    function renderDirections() {
-        const grid = document.getElementById('directionGrid');
-        grid.innerHTML = DIRECTIONS.map(d => `
-            <div class="direction-btn" data-value="${d.value}" onclick="selectDirection('${d.value}')">
-                <span class="dir-name">${d.value}</span>
-                <span class="element">${d.element} · ${d.colors}</span>
-            </div>
-        `).join('');
-    }
+        const POSITION_MAP = {
+            "客厅": "大门对角线财位",
+            "卧室": "床头柜",
+            "书房": "书桌",
+            "厨房": "窗台",
+            "卫生间": "洗手台旁",
+            "阳台": "阳光充足处",
+            "玄关": "鞋柜上方",
+            "餐厅": "餐桌旁"
+        };
 
-    function renderRooms() {
-        const grid = document.getElementById('roomGrid');
-        grid.innerHTML = ROOMS.map(r => `
-            <div class="room-btn" data-value="${r.value}" onclick="selectRoom('${r.value}')">
-                ${r.label}
-            </div>
-        `).join('');
-    }
+        let selectedDirection = '', selectedRoom = '', selectedZodiac = '';
+        let selectedWishes = [];
 
-    function renderZodiacs() {
-        const grid = document.getElementById('zodiacGrid');
-        grid.innerHTML = ZODIACS.map(z => `
-            <div class="zodiac-btn" data-value="${z.value}" onclick="selectZodiac('${z.value}')">
-                <span class="zodiac-icon">${z.icon}</span>
-                <span class="zodiac-name">${z.value}</span>
-                <span class="zodiac-element">${z.element}</span>
-            </div>
-        `).join('');
-    }
+        const directions = [
+            { value: '东', element: '木', colors: '青绿' },
+            { value: '东南', element: '木', colors: '青绿' },
+            { value: '南', element: '火', colors: '红紫' },
+            { value: '西南', element: '土', colors: '黄棕' },
+            { value: '西', element: '金', colors: '白金' },
+            { value: '西北', element: '金', colors: '白金' },
+            { value: '北', element: '水', colors: '蓝黑' },
+            { value: '东北', element: '土', colors: '黄棕' },
+            { value: '中', element: '土', colors: '黄紫' }
+        ];
 
-    function renderWishes() {
-        const grid = document.getElementById('wishGrid');
-        grid.innerHTML = WISHES.map(w => `
-            <div class="wish-btn" data-value="${w.value}" onclick="selectWish('${w.value}')">
-                <span class="wish-icon">${w.icon}</span>
-                <span class="wish-name">${w.value}</span>
-                <span class="wish-desc">${w.desc}</span>
-            </div>
-        `).join('');
-    }
+        const rooms = ['客厅', '卧室', '书房', '厨房', '卫生间', '阳台', '玄关', '餐厅'];
+        const zodiacs = [
+            { name: '鼠', element: '水' }, { name: '牛', element: '土' },
+            { name: '虎', element: '木' }, { name: '兔', element: '木' },
+            { name: '龙', element: '土' }, { name: '蛇', element: '火' },
+            { name: '马', element: '火' }, { name: '羊', element: '土' },
+            { name: '猴', element: '金' }, { name: '鸡', element: '金' },
+            { name: '狗', element: '土' }, { name: '猪', element: '水' }
+        ];
 
-    function selectDirection(v) {
-        selectedDirection = v;
-        document.querySelectorAll('.direction-btn').forEach(b => b.classList.toggle('active', b.dataset.value === v));
-        checkSubmit();
-    }
+        const wishes = [
+            { value: '招财', name: '招财进宝', desc: '财运亨通、富贵吉祥', icon: 'M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z' },
+            { value: '桃花', name: '桃花姻缘', desc: '感情美满、良缘降临', icon: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' },
+            { value: '事业', name: '事业腾飞', desc: '步步高升、前程似锦', icon: 'M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z' },
+            { value: '健康', name: '健康平安', desc: '身体康健、福寿安康', icon: 'M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z' }
+        ];
 
-    function selectRoom(v) {
-        selectedRoom = v;
-        document.querySelectorAll('.room-btn').forEach(b => b.classList.toggle('active', b.dataset.value === v));
-        checkSubmit();
-    }
-
-    function selectZodiac(v) {
-        selectedZodiac = selectedZodiac === v ? '' : v;
-        document.querySelectorAll('.zodiac-btn').forEach(b => b.classList.toggle('active', b.dataset.value === selectedZodiac));
-    }
-
-    function selectWish(v) {
-        if (selectedWishes.includes(v)) {
-            selectedWishes = selectedWishes.filter(w => w !== v);
-        } else if (selectedWishes.length < 2) {
-            selectedWishes.push(v);
-        }
-        document.querySelectorAll('.wish-btn').forEach(b => b.classList.toggle('active', selectedWishes.includes(b.dataset.value)));
-    }
-
-    function checkSubmit() {
-        document.getElementById('submitBtn').disabled = !(selectedDirection && selectedRoom);
-    }
-
-    function showError(msg) {
-        const el = document.getElementById('errorMsg');
-        el.textContent = msg;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 5000);
-    }
-
-    function showLoading(show) {
-        document.getElementById('loading').classList.toggle('show', show);
-        document.getElementById('submitBtn').disabled = show;
-    }
-
-    function hideResult() {
-        document.getElementById('resultSection').classList.remove('show');
-    }
-
-    function getRecommendation() {
-        if (!selectedDirection || !selectedRoom) {
-            showError('请先选择房屋朝向和房间类型');
-            return;
+        function getDirectionIcon(dir) {
+            const icons = {
+                '东': 'M12 2l-7 7h4v6h6V9h4L12 2z',
+                '东南': 'M12 2L2 12h4v8h12v-8h4L12 2z',
+                '南': 'M12 22l7-7h-4V9H9v6H5l7 7z',
+                '西南': 'M22 12l-7-7v4H9v6h6v4l7-7z',
+                '西': 'M2 12l7 7v-4h6V9H9V5l-7 7z',
+                '西北': 'M12 22l7-7h-4V9H5v6h4l-7 7z',
+                '北': 'M12 2l-7 7h4v6h6V9h4L12 2z',
+                '东北': 'M2 12l7-7v4h6v6H9v4l-7-7z',
+                '中': 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z'
+            };
+            return icons[dir];
         }
 
-        showLoading(true);
-        hideResult();
+        function getRoomIcon(room) {
+            const icons = {
+                '客厅': 'M21 8V7l-3-3H6L3 7v1H1v13h6v-2h10v2h6V8h-2zM7 13H5v-2h2v2zm0-4H5V7h2v2z',
+                '卧室': 'M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z',
+                '书房': 'M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z',
+                '厨房': 'M18 2.01L6 2c-1.1 0-2 .89-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.11-.9-1.99-2-1.99zM18 20H6v-9.02h12V20zm0-11H6V4h12v5z',
+                '卫生间': 'M7 2v11h3v9l7-12h-4l4-8z',
+                '阳台': 'M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2z',
+                '玄关': 'M19 19V5c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v14H3v2h18v-2h-2zm-2 0H7V5h10v14z',
+                '餐厅': 'M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z'
+            };
+            return icons[room];
+        }
 
-        setTimeout(() => {
-            try {
-                const result = recommend(selectedDirection, selectedRoom, selectedZodiac, selectedWishes);
-                renderResult(result);
-            } catch (e) {
-                showError('推荐出错，请重试');
-            } finally {
-                showLoading(false);
+        function init() {
+            const dirGrid = document.getElementById('directionGrid');
+            dirGrid.innerHTML = directions.map(d => `
+                <div class="direction-btn" data-value="${d.value}" onclick="selectDirection('${d.value}')">
+                    <div class="direction-icon"><svg viewBox="0 0 24 24"><path d="${getDirectionIcon(d.value)}"/></svg></div>
+                    <span class="dir-name">${d.value}</span>
+                    <span class="element">${d.element} · ${d.colors}</span>
+                </div>
+            `).join('');
+
+            const roomGrid = document.getElementById('roomGrid');
+            roomGrid.innerHTML = rooms.map(r => `
+                <div class="room-btn" data-value="${r}" onclick="selectRoom('${r}')">
+                    <div class="room-icon"><svg viewBox="0 0 24 24"><path d="${getRoomIcon(r)}"/></svg></div>
+                    <span class="room-name">${r}</span>
+                </div>
+            `).join('');
+
+            const zodiacGrid = document.getElementById('zodiacGrid');
+            zodiacGrid.innerHTML = zodiacs.map(z => `
+                <div class="zodiac-btn" data-value="${z.name}" onclick="selectZodiac('${z.name}')">
+                    <div class="zodiac-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12" y="16" text-anchor="middle" fill="currentColor" font-size="10">${z.name}</text></svg></div>
+                    <span class="zodiac-name">${z.name}</span>
+                    <span class="zodiac-element">${z.element}</span>
+                </div>
+            `).join('');
+
+            const wishGrid = document.getElementById('wishGrid');
+            wishGrid.innerHTML = wishes.map(w => `
+                <div class="wish-btn" data-value="${w.value}" onclick="selectWish('${w.value}')">
+                    <div class="wish-icon-wrap">
+                        <div class="wish-icon"><svg viewBox="0 0 24 24"><path d="${w.icon}"/></svg></div>
+                    </div>
+                    <div class="wish-text">
+                        <span class="wish-name">${w.name}</span>
+                        <span class="wish-desc">${w.desc}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectDirection(value) {
+            selectedDirection = value;
+            document.querySelectorAll('.direction-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === value);
+            });
+            checkCanSubmit();
+        }
+
+        function selectRoom(value) {
+            selectedRoom = value;
+            document.querySelectorAll('.room-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === value);
+            });
+            checkCanSubmit();
+        }
+
+        function selectZodiac(value) {
+            selectedZodiac = selectedZodiac === value ? '' : value;
+            document.querySelectorAll('.zodiac-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === selectedZodiac);
+            });
+        }
+
+        function selectWish(value) {
+            if (selectedWishes.includes(value)) {
+                selectedWishes = selectedWishes.filter(w => w !== value);
+            } else if (selectedWishes.length < 2) {
+                selectedWishes.push(value);
             }
-        }, 800);
-    }
-
-    function renderResult(result) {
-        document.getElementById('resultZodiac').textContent = result.zodiac ? `🐾 ${result.zodiac}年` : '';
-        document.getElementById('resultDirection').textContent = `🏠 ${result.direction}方`;
-        document.getElementById('resultRoom').textContent = `🛋️ ${result.room}`;
-        document.getElementById('resultElement').textContent = `🔮 ${result.element}行`;
-
-        const wishesEl = document.getElementById('resultWishes');
-        if (result.wishes.length > 0) {
-            wishesEl.innerHTML = result.wishes.map(w => `<span class="wish-tag">✨ ${w}</span>`).join('');
-            wishesEl.style.display = 'flex';
-        } else {
-            wishesEl.style.display = 'none';
+            document.querySelectorAll('.wish-btn').forEach(btn => {
+                btn.classList.toggle('active', selectedWishes.includes(btn.dataset.value));
+            });
         }
 
-        document.getElementById('recommendations').innerHTML = result.recommendations.map(rec => {
-            const badge = rec.matched_wishes.length > 0
-                ? `<span class="matched-wish">✨ ${rec.matched_wishes.join('+')}</span>` : '';
-            return `
+        function checkCanSubmit() {
+            document.getElementById('submitBtn').disabled = !(selectedDirection && selectedRoom);
+        }
+
+        function getRecommendation() {
+            if (!selectedDirection || !selectedRoom) return;
+
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('resultSection').classList.remove('show');
+
+            setTimeout(() => {
+                const directionElement = DIRECTION_ELEMENTS[selectedDirection];
+                const userElement = selectedZodiac ? ZODIAC_ELEMENTS[selectedZodiac] : directionElement;
+                const avoidFlowers = ROOM_RESTRICTIONS[selectedRoom] || [];
+
+                let candidates = Object.entries(FLOWER_DATABASE).filter(([name, data]) => {
+                    if (avoidFlowers.includes(name)) return false;
+                    return data.positions.includes(selectedRoom) || data.positions.includes('客厅');
+                });
+
+                if (selectedWishes.length > 0) {
+                    const wishMatched = candidates.filter(([_, data]) => 
+                        selectedWishes.some(w => data.wishes.includes(w))
+                    );
+                    if (wishMatched.length > 0) candidates = wishMatched;
+                }
+
+                candidates.sort((a, b) => {
+                    let scoreA = 0, scoreB = 0;
+                    if (a[1].element === userElement) scoreA += 10;
+                    if (a[1].element === directionElement) scoreA += 5;
+                    if (b[1].element === userElement) scoreB += 10;
+                    if (b[1].element === directionElement) scoreB += 5;
+                    return scoreB - scoreA;
+                });
+
+                const recommendations = candidates.slice(0, 3).map(([name, data]) => {
+                    const matchedWishes = selectedWishes.filter(w => data.wishes.includes(w));
+                    const position = POSITION_MAP[selectedRoom] || '明亮通风处';
+                    return {
+                        flower: name,
+                        color: data.colors[0],
+                        element: data.element,
+                        direction: selectedDirection,
+                        reason: `${name}五行属${data.element}，${data.feng_shui}。建议摆放于${selectedRoom}${position}，${matchedWishes.length > 0 ? '有助' + matchedWishes.join('、') + '。' : '为居室增添生机。'}`,
+                        matched_wishes: matchedWishes,
+                        is_auspicious: data.element === userElement || data.element === directionElement
+                    };
+                });
+
+                renderResult({
+                    direction: selectedDirection,
+                    room: selectedRoom,
+                    element: userElement,
+                    zodiac: selectedZodiac,
+                    wishes: selectedWishes,
+                    recommendations: recommendations
+                });
+
+                document.getElementById('loading').classList.remove('show');
+            }, 800);
+        }
+
+        function renderResult(result) {
+            const zodiacEl = document.getElementById('resultZodiac');
+            zodiacEl.textContent = result.zodiac ? `${result.zodiac}年` : '';
+            zodiacEl.style.display = result.zodiac ? 'inline-block' : 'none';
+            document.getElementById('resultDirection').textContent = `${result.direction}方`;
+            document.getElementById('resultRoom').textContent = result.room;
+            document.getElementById('resultElement').textContent = `${result.element}行`;
+
+            const wishesEl = document.getElementById('resultWishes');
+            wishesEl.innerHTML = result.wishes.map(w => `<span class="result-tag highlight">${w}</span>`).join('');
+            wishesEl.style.display = result.wishes.length > 0 ? 'flex' : 'none';
+
+            document.getElementById('recommendations').innerHTML = result.recommendations.map(rec => `
                 <div class="recommendation-card">
                     <div class="flower-header">
-                        <span class="flower-name">🌸 ${rec.flower}</span>
-                        ${badge}
+                        <span class="flower-name">
+                            <span class="flower-icon"><svg viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9-4.5 0-9 4.5-9 9zm0-20C7.03 2 3 6.03 3 11c4.5 0 9-4.5 9-9z"/></svg></span>
+                            ${rec.flower}
+                        </span>
+                        ${rec.matched_wishes.length > 0 ? `<span class="matched-wish">${rec.matched_wishes.join('+')}</span>` : ''}
                     </div>
-                    <div class="info-row">
-                        <div class="info-item">颜色: <span>${rec.color}</span></div>
-                        <div class="info-item">五行: <span>${rec.element_match}</span></div>
-                        <div class="info-item">功效: <span>${rec.feng_shui_benefit}</span></div>
+                    <div class="flower-reason">${rec.reason}</div>
+                    <div class="flower-details">
+                        <span class="detail-tag">${rec.color}色</span>
+                        <span class="detail-tag">${rec.element}行</span>
+                        <span class="detail-tag">${rec.direction}方</span>
+                        ${rec.is_auspicious ? '<span class="detail-tag">✨ 大吉</span>' : ''}
                     </div>
-                    <div class="info-item" style="background:transparent;padding:0;margin-bottom:10px;">
-                        摆放位置: <span>${rec.position}</span>
-                    </div>
-                    <div class="reason">💡 ${rec.reason}</div>
-                    ${rec.warnings.length > 0 ? `<div class="warnings">⚠️ ${rec.warnings.join('；')}</div>` : ''}
                 </div>
-            `;
-        }).join('');
+            `).join('');
 
-        document.getElementById('summary').textContent = result.summary;
-        document.getElementById('resultSection').classList.add('show');
-        document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
-    }
+            document.getElementById('resultSection').classList.add('show');
+            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+        }
 
-    init();
+        init();
     </script>
 </body>
 </html>
